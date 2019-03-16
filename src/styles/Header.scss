@@ -1,0 +1,20 @@
+@import 'colors';
+
+.header {
+  padding: 0 2.5rem;
+
+  &__title {
+    font-size: 2rem;
+    flex: 1;
+  }
+
+  &__action {
+    cursor: pointer;
+    flex-shrink: 0;
+    background: $side-nav-background;
+    color: $side-nav-text-color;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 0;
+  }
+}

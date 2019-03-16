@@ -1,0 +1,46 @@
+@import './colors';
+@import './dimentions';
+
+.app {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  height: 100%;
+
+  &__side-nav {
+    width: $side-nav-width;
+    background: $side-nav-background;
+    color: $side-nav-text-color;
+  }
+
+  &__main-container {
+    flex: 1;
+    background: $main-container-background;
+  }
+
+  &__header {
+    height: $app-header-height;
+    background: $app-header-background;
+    display: flex;
+    align-items: center;
+  }
+}
+
+// basic theming
+.button {
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+
+  &__icon {
+    max-height: 1.25rem;
+    margin-right: 0.5rem;
+  }
+
+  &__text {
+    font-size: 1rem;
+  }
+}

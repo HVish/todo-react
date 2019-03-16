@@ -15,6 +15,8 @@
 
   &__main-container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     background: $main-container-background;
   }
 
@@ -23,6 +25,11 @@
     background: $app-header-background;
     display: flex;
     align-items: center;
+  }
+
+  &__body {
+    flex: 1;
+    overflow: auto;
   }
 }
 
@@ -43,4 +50,13 @@
   &__text {
     font-size: 1rem;
   }
+}
+
+.tag {
+  background: #e6e6e6;
+  margin: 0 1px;
+  border-radius: 100px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
 }

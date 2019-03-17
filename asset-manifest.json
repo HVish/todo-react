@@ -1,0 +1,22 @@
+{
+  "main.css": "/todo-react/static/css/main.9d29eccc.chunk.css",
+  "main.js": "/todo-react/static/js/main.5d11c10b.chunk.js",
+  "main.js.map": "/todo-react/static/js/main.5d11c10b.chunk.js.map",
+  "runtime~main.js": "/todo-react/static/js/runtime~main.6292bb99.js",
+  "runtime~main.js.map": "/todo-react/static/js/runtime~main.6292bb99.js.map",
+  "static/js/2.a08f1db4.chunk.js": "/todo-react/static/js/2.a08f1db4.chunk.js",
+  "static/js/2.a08f1db4.chunk.js.map": "/todo-react/static/js/2.a08f1db4.chunk.js.map",
+  "index.html": "/todo-react/index.html",
+  "precache-manifest.52d82a30179fefb9e78b3e3f40a44c5d.js": "/todo-react/precache-manifest.52d82a30179fefb9e78b3e3f40a44c5d.js",
+  "service-worker.js": "/todo-react/service-worker.js",
+  "static/css/main.9d29eccc.chunk.css.map": "/todo-react/static/css/main.9d29eccc.chunk.css.map",
+  "static/media/done.svg": "/todo-react/static/media/done.c2625638.svg",
+  "static/media/edit.svg": "/todo-react/static/media/edit.522a418b.svg",
+  "static/media/plus.svg": "/todo-react/static/media/plus.8601f5bd.svg",
+  "static/media/task-completed.svg": "/todo-react/static/media/task-completed.981ae311.svg",
+  "static/media/task-in-progress.svg": "/todo-react/static/media/task-in-progress.9be52237.svg",
+  "static/media/task-pending.svg": "/todo-react/static/media/task-pending.2bfbf733.svg",
+  "static/media/task-search.svg": "/todo-react/static/media/task-search.e7cffb9d.svg",
+  "static/media/vishnu.jpg": "/todo-react/static/media/vishnu.59c6254c.jpg",
+  "static/media/www.svg": "/todo-react/static/media/www.c94aea67.svg"
+}

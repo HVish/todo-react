@@ -1,15 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import startCase from 'lodash/startCase';
 
 import '../styles/TaskDetails.scss';
+import { updateTask } from '../actions';
 import EditIcon from '../assets/edit.svg';
 import DoneIcon from '../assets/done.svg';
+import Task, { TaskStatus } from '../models/Task';
 import EmptyMessage from '../components/EmptyMessage';
 import CircularProgress from '../components/CircularProgress';
 
 const TaskDetails = props => {
   const task = props.selectedTask;
   const isTaskSelected = !!task.id;
+
+  const handleMarkAsDone = () => {
+    const t = Task.from(task, true);
+    props.dispatch(updateTask(t.markAsDone().toJSON()));
+  };
 
   if (isTaskSelected) {
     return (
@@ -46,22 +54,24 @@ const TaskDetails = props => {
             </div>
             <div className="meta">
               <span className="meta__title">Status:</span>
-              <span className="meta__value">{task.status}</span>
+              <span className="meta__value">{startCase(task.status)}</span>
             </div>
           </div>
         </div>
-        <div className="task-panel__details-label">Description: </div>
+        {task.description && <div className="task-panel__details-label">Description: </div>}
         <p className="task-panel__details">{task.description}</p>
-        <div className="task-panel__actions">
-          <button className="button button_info">
-            <img src={EditIcon} alt="edit" className="button__icon" />
-            <span className="button__text">Edit Task</span>
-          </button>
-          <button className="button button_success">
-            <img src={DoneIcon} alt="done" className="button__icon" />
-            <span className="button__text">Done</span>
-          </button>
-        </div>
+        {task.status !== TaskStatus.COMPLETED && (
+          <div className="task-panel__actions">
+            <button className="button button_info">
+              <img src={EditIcon} alt="edit" className="button__icon" />
+              <span className="button__text">Edit Task</span>
+            </button>
+            <button className="button button_success" onClick={handleMarkAsDone}>
+              <img src={DoneIcon} alt="done" className="button__icon" />
+              <span className="button__text">Done</span>
+            </button>
+          </div>
+        )}
       </div>
     );
   }

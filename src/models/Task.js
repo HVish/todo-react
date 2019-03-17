@@ -1,5 +1,4 @@
 import uniqueId from 'lodash/uniqueId';
-import startCase from 'lodash/startCase';
 
 export const TaskStatus = Object.freeze({
   PENDING: 'pending',
@@ -17,9 +16,15 @@ export default class Task {
   /**
    * Copies a task
    * @param {Task} task instance of a task
+   * @param {boolean} shouldCopyId copy task id also or not
    */
-  static from(task) {
-    return new Task(task.title, task.priority, task.tags);
+  static from(task, shouldCopyId = false) {
+    const t = new Task(task.title, task.priority, task.tags);
+    if (shouldCopyId) {
+      t.id = task.id;
+      t.createdAt = task.createdAt;
+    }
+    return t;
   }
 
   /**
@@ -59,6 +64,7 @@ export default class Task {
    */
   startProgress() {
     this.status = TaskStatus.IN_PROGRESS;
+    return this;
   }
 
   /**
@@ -73,6 +79,7 @@ export default class Task {
     }
     this.status = TaskStatus.IN_PROGRESS;
     this.progress = value;
+    return this;
   }
 
   /**
@@ -81,6 +88,7 @@ export default class Task {
   markAsDone() {
     this.status = TaskStatus.COMPLETED;
     this.progress = 100;
+    return this;
   }
 
   toJSON() {
@@ -90,7 +98,7 @@ export default class Task {
       tags: this.tags,
       progress: this.progress,
       priority: this.priority,
-      status: startCase(this.status),
+      status: this.status,
       createdAt: this.createdAt.toLocaleString('en-IN', {
         hour12: true,
         month: 'long',

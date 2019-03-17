@@ -1,7 +1,63 @@
-.task-details {
+.task-panel {
   background: #fff;
-  overflow-y: auto;
+  overflow: auto;
   border-radius: 4px;
   margin-left: 1.5rem;
-  padding: 1rem;
+  padding: 2rem;
+
+  &__title {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 1rem;
+    margin: 0 0 2rem;
+  }
+
+  &__actions {
+    text-align: right;
+
+    button {
+      margin-right: 0.5rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__details-label {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  &__details {
+    line-height: 1.5;
+  }
+
+  &__metas {
+    display: flex;
+    align-items: center;
+  }
+
+  &__canvas {
+    margin-right: 2rem;
+  }
+
+  .meta {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+
+    &__title {
+      flex: 1;
+      display: inline-block;
+      font-weight: bold;
+      opacity: 0.5;
+      font-size: 1rem;
+      min-width: 9rem;
+    }
+
+    &__value {
+      flex: 2;
+    }
+  }
 }

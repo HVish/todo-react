@@ -7,7 +7,7 @@ import plusIcon from '../assets/plus.svg';
 const Header = props => (
   <header className="app__header header">
     <div className="header__title">{props.title}</div>
-    <button className="header__action button">
+    <button className="header__action button button_default">
       <img src={plusIcon} className="button__icon" alt="plus" />
       <span className="button__text">Add Tasks</span>
     </button>

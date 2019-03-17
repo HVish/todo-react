@@ -11,12 +11,14 @@
     width: $side-nav-width;
     background: $side-nav-background;
     color: $side-nav-text-color;
+    flex-shrink: 0;
   }
 
   &__main-container {
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: auto;
     background: $main-container-background;
   }
 
@@ -35,8 +37,10 @@
 
 // basic theming
 .button {
+  border: 0;
   border-radius: 3px;
-  display: flex;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
   padding: 0.875rem 1.5rem;
   font-size: 1rem;
@@ -49,6 +53,21 @@
 
   &__text {
     font-size: 1rem;
+  }
+
+  &_default {
+    background: #343746;
+    color: #fff;
+  }
+
+  &_info {
+    background: #1976d2;
+    color: #fff;
+  }
+
+  &_success {
+    background: #388e3c;
+    color: #fff;
   }
 }
 

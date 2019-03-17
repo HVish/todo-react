@@ -44,7 +44,7 @@ const SideNav = () => (
       <div className="overall-progress__label">Task Progress</div>
       <CircularProgress
         className="overall-progress__canvas"
-        color="#ffc800"
+        color="#fbc02d"
         showLabel
         width={150}
         progress={70}

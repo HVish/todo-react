@@ -17,7 +17,7 @@ const TaskSummary = props => {
           <span className="tag">App</span>
         </div>
       </div>
-      <CircularProgress className="task__progress" color="#a08ad2" width={40} progress={progress} />
+      <CircularProgress className="task__progress" color="#7e57c2" width={40} progress={progress} />
     </div>
   );
 };

@@ -34,6 +34,7 @@ TaskSummary.propTypes = {
   task: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    description: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     progress: PropTypes.number.isRequired,
     priority: PropTypes.string.isRequired,

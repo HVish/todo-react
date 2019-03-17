@@ -19,10 +19,12 @@ export default class Task {
    * @param {boolean} shouldCopyId copy task id also or not
    */
   static from(task, shouldCopyId = false) {
-    const t = new Task(task.title, task.priority, task.tags);
+    const t = new Task(task.title, task.description, task.priority, task.tags);
     if (shouldCopyId) {
       t.id = task.id;
+      t.progress = +task.progress;
       t.createdAt = task.createdAt;
+      t.status = task.status;
     }
     return t;
   }
@@ -45,13 +47,15 @@ export default class Task {
 
   /**
    * Creates a task
-   * @param {string} title task description
+   * @param {string} title task title
+   * @param {string} description task description
    * @param {('not_started'|'in_progress'|'completed')} priority priority of the task
    * @param {string[]} tags to group tasks
    */
-  constructor(title, priority, tags) {
+  constructor(title, description, priority, tags) {
     this.id = uniqueId('task-');
     this.title = title;
+    this.description = description;
     this.progress = 0;
     this.priority = Task.parsePriority(priority);
     this.tags = tags instanceof Array ? tags : ['todo'];
@@ -95,6 +99,7 @@ export default class Task {
     return {
       id: this.id,
       title: this.title,
+      description: this.description,
       tags: this.tags,
       progress: this.progress,
       priority: this.priority,

@@ -22,9 +22,18 @@ export default class Task {
     const t = new Task(task.title, task.description, task.priority, task.tags);
     if (shouldCopyId) {
       t.id = task.id;
+    }
+
+    if (task.progress !== undefined) {
       t.progress = +task.progress;
-      t.createdAt = task.createdAt;
+    }
+
+    if (task.status) {
       t.status = task.status;
+    }
+
+    if (task.createdAt) {
+      t.createdAt = task.createdAt;
     }
     return t;
   }

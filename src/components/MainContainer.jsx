@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './Header';
+import Header from '../containers/Header';
 
 const MainContainer = props => (
   <div className="app__main-container">

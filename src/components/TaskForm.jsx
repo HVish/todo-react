@@ -51,7 +51,7 @@ const TaskForm = props => {
         <input
           className="task-form__input"
           type="text"
-          value={task.title}
+          defaultValue={props.task && props.task.title}
           placeholder="Task summary"
           onChange={e => handleValueChange(e, 'title')}
         />
@@ -61,7 +61,7 @@ const TaskForm = props => {
         <textarea
           className="task-form__input"
           type="text"
-          value={task.description}
+          defaultValue={props.task && props.task.description}
           placeholder="Task details (optional)"
           onChange={e => handleValueChange(e, 'description')}
         />
@@ -71,7 +71,7 @@ const TaskForm = props => {
         <input
           className="task-form__input"
           type="text"
-          value={task.tags.join()}
+          defaultValue={props.task && props.task.tags ? props.task.tags.join() : ''}
           placeholder="Comma-separated tags"
           onChange={handleTagsChange}
         />
@@ -81,7 +81,7 @@ const TaskForm = props => {
         <input
           className="task-form__input"
           type="number"
-          value={task.progress}
+          defaultValue={props.task && props.task.progress}
           placeholder="Progress in percentage between (0-100)"
           onChange={handleProgressChange}
         />
@@ -90,7 +90,7 @@ const TaskForm = props => {
         <label className="task-form__label">Progress:</label>
         <select
           className="task-form__input"
-          value={task.priority}
+          defaultValue={props.task && props.task.priority}
           placeholder="Task priority"
           onChange={e => handleValueChange(e, 'priority')}
         >

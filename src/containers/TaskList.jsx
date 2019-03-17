@@ -3,19 +3,20 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import '../styles/TaskList.scss';
-import Task from '../models/Task';
 import { toggleTaskSelection } from '../actions';
 import TaskSummary from '../components/TaskSummary';
 import SearchTask from '../components/SearchTask';
 import EmptyMessage from '../components/EmptyMessage';
 
 const TaskList = props => {
-  const [tasks, setTasks] = useState(
-    props.tasks.filter(t => t.status === props.status || props.status === 'all')
-  );
+  const taskList = Object.keys(props.tasks)
+    .map(t => props.tasks[t])
+    .filter(t => t.status === props.status || props.status === 'all');
+
+  const [tasks, setTasks] = useState(taskList);
 
   const handleSearch = title => {
-    setTasks(props.tasks.filter(task => task.title.match(new RegExp(title, 'i'))));
+    setTasks(taskList.filter(task => task.title.match(new RegExp(title, 'i'))));
   };
 
   const handleTaskSelection = task => {
@@ -50,13 +51,7 @@ TaskList.propTypes = {
   status: PropTypes.string
 };
 
-// mocks state-data for now
-const tasksList = [
-  new Task('Create a todo app in React').setProgress(30).toJSON(),
-  new Task('Complete 100km running in one week').startProgress().toJSON(),
-  new Task('Watch 2 movies this weekend with friends').markAsDone().toJSON(),
-  new Task('Call doctor for appointment').toJSON(),
-  new Task('Pay house rent').toJSON()
-];
-
-export default connect(state => ({ tasks: tasksList, selectedTask: state.selectedTask }))(TaskList);
+export default connect(state => ({
+  tasks: state.tasks,
+  selectedTask: state.selectedTask
+}))(TaskList);

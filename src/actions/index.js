@@ -1,20 +1,27 @@
+import * as actionTypes from './types';
+
 export const addTask = task => ({
-  type: 'ADD_TASK',
+  type: actionTypes.ADD_TASK,
   task
 });
 
 export const updateTask = task => ({
-  type: 'UPDATE_TASK',
+  type: actionTypes.UPDATE_TASK,
   task
 });
 
 export const deleteTask = task => ({
-  type: 'DELETE_TASK',
+  type: actionTypes.DELETE_TASK,
   task
 });
 
 export const moveTask = (task, position) => ({
-  type: 'MOVE_TASK',
+  type: actionTypes.MOVE_TASK,
   task,
   position
+});
+
+export const toggleTaskSelection = task => ({
+  type: actionTypes.TOGGLE_TASK_SELECTION,
+  task
 });

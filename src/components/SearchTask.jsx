@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import '../styles/SearchTask.scss';
 
@@ -13,6 +14,10 @@ const SearchTask = props => {
       />
     </div>
   );
+};
+
+SearchTask.propType = {
+  onSearch: PropTypes.func.isRequired
 };
 
 export default SearchTask;

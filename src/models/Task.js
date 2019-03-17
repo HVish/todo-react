@@ -1,4 +1,5 @@
 import uniqueId from 'lodash/uniqueId';
+import startCase from 'lodash/startCase';
 
 export const TaskStatus = Object.freeze({
   PENDING: 'pending',
@@ -82,15 +83,22 @@ export default class Task {
     this.progress = 100;
   }
 
-  toObject() {
+  toJSON() {
     return {
       id: this.id,
       title: this.title,
       tags: this.tags,
       progress: this.progress,
       priority: this.priority,
-      status: this.status,
-      createdAt: this.createdAt
+      status: startCase(this.status),
+      createdAt: this.createdAt.toLocaleString('en-IN', {
+        hour12: true,
+        month: 'long',
+        year: 'numeric',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
     };
   }
 }

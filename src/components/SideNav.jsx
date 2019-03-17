@@ -40,8 +40,15 @@ const SideNav = () => (
         <span className="link__text">Completed</span>
       </NavLink>
     </NavItem>
-    <NavItem classes="nav__footer">
-      <CircularProgress height={100} width={100} progress={75} />
+    <NavItem classes="overall-progress">
+      <div className="overall-progress__label">Task Progress</div>
+      <CircularProgress
+        className="overall-progress__canvas"
+        color="#ffc800"
+        showLabel
+        width={150}
+        progress={70}
+      />
     </NavItem>
   </nav>
 );

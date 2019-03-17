@@ -23,16 +23,20 @@
 }
 
 .nav {
+  overflow: auto;
+
   &__item {
     display: flex;
     align-items: center;
   }
+
   &__header {
     height: $app-header-height;
-    background: $side-nav-header-background;
+    background: $theme-color;
     margin-bottom: 3rem;
     padding: 0 1.5rem;
   }
+
   &__link {
     color: $side-nav-text-color;
     text-decoration: none;
@@ -43,5 +47,15 @@
     &_hover {
       background: #211f2a;
     }
+  }
+}
+
+.overall-progress {
+  margin-top: 4rem;
+  flex-direction: column;
+
+  &__label {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 }

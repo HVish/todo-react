@@ -1,3 +1,5 @@
+@import './colors';
+
 .task {
   border: 1px solid rgb(233, 233, 233);
   border-radius: 4px;
@@ -7,6 +9,11 @@
   display: flex;
   align-items: center;
 
+  &_selected {
+    border-left: 4px solid $theme-color;
+    background: #f6f6f6;
+  }
+
   &__drag-handle {
     width: 10px;
     line-height: 5px;
@@ -15,7 +22,7 @@
     letter-spacing: 1px;
     color: #cccccc;
     text-shadow: 1px 0 1px black;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     overflow: hidden;
 
     &::after {
@@ -40,5 +47,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  &__progress {
+    margin-left: 1rem;
   }
 }

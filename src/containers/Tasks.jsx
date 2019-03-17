@@ -6,7 +6,7 @@ import TaskList from './TaskList';
 
 const Tasks = props => (
   <div className="tasks">
-    <TaskList />
+    <TaskList status={props.status} />
     <TaskDetails />
   </div>
 );

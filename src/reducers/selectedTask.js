@@ -1,4 +1,4 @@
-import { TOGGLE_TASK_SELECTION, UPDATE_TASK } from '../actions/types';
+import { TOGGLE_TASK_SELECTION, UPDATE_TASK } from '../constants/action-types';
 
 const initialState = {};
 

@@ -12,11 +12,12 @@ const TaskSummary = props => {
       <div className="task__details">
         <div className="task__title">{props.task.title}</div>
         <div className="task__tags">
-          {props.task.tags.map((tag, key) => (
-            <span className="tag" key={key}>
-              {tag}
-            </span>
-          ))}
+          {props.task.tags &&
+            props.task.tags.split(',').map((tag, key) => (
+              <span className="tag" key={key}>
+                {tag.trim()}
+              </span>
+            ))}
         </div>
       </div>
       <CircularProgress
@@ -35,7 +36,7 @@ TaskSummary.propTypes = {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    tags: PropTypes.string,
     progress: PropTypes.number.isRequired,
     priority: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,

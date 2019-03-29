@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import startCase from 'lodash/startCase';
 
 import '../styles/TaskDetails.scss';
-import { updateTask } from '../actions';
 import EditIcon from '../assets/edit.svg';
 import DoneIcon from '../assets/done.svg';
-import Task, { TaskStatus } from '../models/Task';
+
+import { updateTask } from '../actions';
+import TaskForm from '../components/TaskForm';
+import { TaskStatus } from '../constants/tasks';
 import EmptyMessage from '../components/EmptyMessage';
 import CircularProgress from '../components/CircularProgress';
-import TaskForm from '../components/TaskForm';
 
 const TaskDetails = props => {
   const [isEditing, setIsEditing] = useState(false);
@@ -17,14 +18,18 @@ const TaskDetails = props => {
   const isTaskSelected = !!task.id;
 
   const handleMarkAsDone = () => {
-    const t = Task.from(task, true);
-    props.dispatch(updateTask(t.markAsDone().toJSON()));
+    props.dispatch(
+      updateTask({
+        ...task,
+        progress: 100,
+        status: TaskStatus.COMPLETED
+      })
+    );
   };
 
   const handleEditTask = task => {
-    const t = Task.from(task, true);
     setIsEditing(false);
-    props.dispatch(updateTask(t.toJSON()));
+    props.dispatch(updateTask(task));
   };
 
   const handleFormCancel = () => {
@@ -67,11 +72,12 @@ const TaskDetails = props => {
             <div className="meta">
               <span className="meta__title">Tags:</span>
               <span className="meta__value">
-                {task.tags.map((tag, key) => (
-                  <span key={key} className="tag">
-                    {tag}
-                  </span>
-                ))}
+                {task.tags &&
+                  task.tags.split(',').map((tag, key) => (
+                    <span key={key} className="tag">
+                      {tag.trim()}
+                    </span>
+                  ))}
               </span>
             </div>
             <div className="meta">

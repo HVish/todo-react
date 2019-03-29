@@ -1,20 +1,69 @@
 import keyBy from 'lodash/keyBy';
-import Task from '../models/Task';
-import { ADD_TASK, UPDATE_TASK, DELETE_TASK } from '../actions/types';
+import uniqueId from 'lodash/uniqueId';
+
+import { formatDate } from '../utils';
+import { TaskPriority, TaskStatus } from '../constants/tasks';
+import { ADD_TASK, UPDATE_TASK, DELETE_TASK } from '../constants/action-types';
 
 const t = [
-  new Task('Create a todo app in React').setProgress(30).toJSON(),
-  new Task('Complete 100km running in one week').startProgress().toJSON(),
-  new Task('Watch 2 movies this weekend with friends').markAsDone().toJSON(),
-  new Task('Call doctor for appointment').toJSON(),
-  new Task('Pay house rent').toJSON()
+  {
+    id: uniqueId('task-'),
+    title: 'Create a todo app in React',
+    description: '',
+    progress: 30,
+    priority: TaskPriority.HIGH,
+    tags: 'todo, work',
+    status: TaskStatus.PENDING,
+    createdAt: formatDate(new Date())
+  },
+  {
+    id: uniqueId('task-'),
+    title: 'Complete 100km running in one week',
+    description: '',
+    progress: 0,
+    priority: TaskPriority.MEDIUM,
+    tags: 'health',
+    status: TaskStatus.PENDING,
+    createdAt: formatDate(new Date())
+  },
+  {
+    id: uniqueId('task-'),
+    title: 'Watch 2 movies this weekend with friends',
+    description: '',
+    progress: 100,
+    priority: TaskPriority.LOW,
+    tags: 'life, friends',
+    status: TaskStatus.COMPLETED,
+    createdAt: formatDate(new Date())
+  },
+  {
+    id: uniqueId('task-'),
+    title: 'Call doctor for appointments',
+    description: '',
+    progress: 0,
+    priority: TaskPriority.LOW,
+    tags: 'health',
+    status: TaskStatus.PENDING,
+    createdAt: formatDate(new Date())
+  },
+  {
+    id: uniqueId('task-'),
+    title: 'Pay house rent',
+    description: '',
+    progress: 0,
+    priority: TaskPriority.LOW,
+    tags: 'todo',
+    status: TaskStatus.PENDING,
+    createdAt: formatDate(new Date())
+  }
 ];
+
 const initialState = keyBy(t, 'id');
 
 const tasks = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TASK: {
-      const task = Task.from(action.task).toJSON();
+      const task = action.task;
       return {
         [task.id]: task,
         ...state

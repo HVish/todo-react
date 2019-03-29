@@ -5,7 +5,7 @@ import '../styles/App.scss';
 import SideNav from './SideNav';
 import MainContainer from './MainContainer';
 import Tasks from '../containers/Tasks';
-import { TaskStatus } from '../models/Task';
+import { TaskStatus } from '../constants/tasks';
 
 const App = props => (
   <div className="app">

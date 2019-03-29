@@ -2,17 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import '../styles/TaskForm.scss';
-import { TaskStatus, TaskPriority } from '../models/Task';
+import { TaskStatus, TaskPriority } from '../constants/tasks';
 
 const TaskForm = props => {
   const [task, setTask] = useState(props.task || {});
-
-  const handleTagsChange = e => {
-    setTask({
-      ...task,
-      tags: e.target.value ? e.target.value.split(',').map(v => v.trim()) : []
-    });
-  };
 
   const handleProgressChange = e => {
     const value = +e.target.value;
@@ -71,9 +64,9 @@ const TaskForm = props => {
         <input
           className="task-form__input"
           type="text"
-          defaultValue={props.task && props.task.tags ? props.task.tags.join() : ''}
+          defaultValue={props.task.tags}
           placeholder="Comma-separated tags"
-          onChange={handleTagsChange}
+          onChange={handleValueChange}
         />
       </div>
       <div className="task-form__group">

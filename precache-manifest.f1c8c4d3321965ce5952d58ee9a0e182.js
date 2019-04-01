@@ -4,32 +4,36 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/task-in-progress.9be52237.svg"
   },
   {
-    "revision": "baa5da4ed3fc867e77bd",
-    "url": "/todo-react/static/css/main.bb049d1b.chunk.css"
+    "revision": "decad89ad592dd4f323d",
+    "url": "/todo-react/static/css/main.1167165f.chunk.css"
   },
   {
     "revision": "cd203911fc85a7f73b39",
     "url": "/todo-react/static/js/runtime~main.6292bb99.js"
   },
   {
-    "revision": "ad2f74dca26a91642cc4",
-    "url": "/todo-react/static/js/2.0682fece.chunk.js"
+    "revision": "982551e4dd036d583eff",
+    "url": "/todo-react/static/js/2.a5644f32.chunk.js"
   },
   {
     "revision": "e7cffb9da4786f79de819029970890e0",
     "url": "/todo-react/static/media/task-search.e7cffb9d.svg"
   },
   {
-    "revision": "981ae3112abeb2825c924684168a72a0",
-    "url": "/todo-react/static/media/task-completed.981ae311.svg"
-  },
-  {
     "revision": "2bfbf7339f2ebce75631bb77b06d8dd1",
     "url": "/todo-react/static/media/task-pending.2bfbf733.svg"
   },
   {
-    "revision": "baa5da4ed3fc867e77bd",
-    "url": "/todo-react/static/js/main.0dd9cf96.chunk.js"
+    "revision": "37acd06039bd0e35abea69a0f5b4449f",
+    "url": "/todo-react/static/media/task-archived.37acd060.svg"
+  },
+  {
+    "revision": "981ae3112abeb2825c924684168a72a0",
+    "url": "/todo-react/static/media/task-completed.981ae311.svg"
+  },
+  {
+    "revision": "decad89ad592dd4f323d",
+    "url": "/todo-react/static/js/main.38b5c821.chunk.js"
   },
   {
     "revision": "59c6254cab748a2e19c353fc76995780",
@@ -38,6 +42,10 @@ self.__precacheManifest = [
   {
     "revision": "8601f5bd9fb2d08026329c47364dde32",
     "url": "/todo-react/static/media/plus.8601f5bd.svg"
+  },
+  {
+    "revision": "40d5f23096695d4fbc2a29d8ca02c4c1",
+    "url": "/todo-react/static/media/bin.40d5f230.svg"
   },
   {
     "revision": "522a418bc396f1551eef594b611cab2f",
@@ -52,7 +60,7 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/www.c94aea67.svg"
   },
   {
-    "revision": "6d242c27cb33d204690569aaf1587f85",
+    "revision": "cb78e5c346747427fca15eee7d0bca94",
     "url": "/todo-react/index.html"
   }
 ];

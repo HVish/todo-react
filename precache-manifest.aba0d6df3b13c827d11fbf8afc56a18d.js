@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/task-in-progress.9be52237.svg"
   },
   {
-    "revision": "6b70256a958ca6f0271a",
-    "url": "/todo-react/static/css/main.9d29eccc.chunk.css"
+    "revision": "baa5da4ed3fc867e77bd",
+    "url": "/todo-react/static/css/main.bb049d1b.chunk.css"
   },
   {
     "revision": "cd203911fc85a7f73b39",
     "url": "/todo-react/static/js/runtime~main.6292bb99.js"
   },
   {
-    "revision": "555b87e014ba2587e9e9",
-    "url": "/todo-react/static/js/2.a08f1db4.chunk.js"
+    "revision": "ad2f74dca26a91642cc4",
+    "url": "/todo-react/static/js/2.0682fece.chunk.js"
   },
   {
     "revision": "e7cffb9da4786f79de819029970890e0",
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/task-pending.2bfbf733.svg"
   },
   {
-    "revision": "6b70256a958ca6f0271a",
-    "url": "/todo-react/static/js/main.268044f8.chunk.js"
+    "revision": "baa5da4ed3fc867e77bd",
+    "url": "/todo-react/static/js/main.0dd9cf96.chunk.js"
   },
   {
     "revision": "59c6254cab748a2e19c353fc76995780",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/www.c94aea67.svg"
   },
   {
-    "revision": "8719f6dcb8ee05d303fc7fd59692c8e1",
+    "revision": "6d242c27cb33d204690569aaf1587f85",
     "url": "/todo-react/index.html"
   }
 ];

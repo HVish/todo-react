@@ -64,9 +64,9 @@ const TaskForm = props => {
         <input
           className="task-form__input"
           type="text"
-          defaultValue={props.task.tags}
+          defaultValue={props.task && props.task.tags}
           placeholder="Comma-separated tags"
-          onChange={handleValueChange}
+          onChange={e => handleValueChange(e, 'tags')}
         />
       </div>
       <div className="task-form__group">

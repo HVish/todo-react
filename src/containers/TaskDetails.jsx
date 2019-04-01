@@ -111,4 +111,6 @@ const TaskDetails = props => {
   );
 };
 
-export default connect(state => ({ selectedTask: state.selectedTask }))(TaskDetails);
+export default connect(state => ({
+  selectedTask: state.tasks[state.selectedTask] || {}
+}))(TaskDetails);

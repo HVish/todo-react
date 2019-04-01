@@ -21,7 +21,7 @@ export const moveTask = (task, position) => ({
   position
 });
 
-export const toggleTaskSelection = task => ({
+export const toggleTaskSelection = taskId => ({
   type: actionTypes.TOGGLE_TASK_SELECTION,
-  task
+  taskId
 });

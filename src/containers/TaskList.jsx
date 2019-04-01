@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import '../styles/TaskList.scss';
@@ -8,50 +8,69 @@ import TaskSummary from '../components/TaskSummary';
 import SearchTask from '../components/SearchTask';
 import EmptyMessage from '../components/EmptyMessage';
 
-const TaskList = props => {
-  const taskList = Object.keys(props.tasks)
-    .map(t => props.tasks[t])
-    .filter(t => t.status === props.status || props.status === 'all');
+class TaskList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: []
+    };
+  }
 
-  const [tasks, setTasks] = useState(taskList);
+  componentWillReceiveProps(props) {
+    const tasks = props.tasks.filter(t => t.status === props.status || props.status === 'all');
+    this.setState({ tasks: tasks });
+  }
 
-  const handleSearch = title => {
-    setTasks(taskList.filter(task => task.title.match(new RegExp(title, 'i'))));
-  };
+  componentDidMount() {
+    const props = this.props;
+    const tasks = props.tasks.filter(t => t.status === props.status || props.status === 'all');
+    this.setState({ tasks: tasks });
+  }
 
-  const handleTaskSelection = task => {
-    props.dispatch(toggleTaskSelection(task));
-  };
+  handleSearch(title) {
+    this.setState({
+      ...this.state,
+      tasks: this.props.tasks.filter(t => t.title.match(new RegExp(title, 'i')))
+    });
+  }
 
-  if (tasks.length) {
+  handleTaskSelection(task) {
+    this.props.dispatch(toggleTaskSelection(task.id));
+  }
+
+  render() {
+    const tasks = this.state.tasks;
+    const selectedTask = this.props.selectedTask;
+    if (tasks.length) {
+      return (
+        <div className="tasks__list task-list">
+          <SearchTask onSearch={this.handleSearch.bind(this)} />
+          <div className="task-list__list">
+            {tasks.map((task, key) => (
+              <TaskSummary
+                key={key}
+                task={task}
+                isSelected={selectedTask.id === task.id}
+                onTaskSelected={this.handleTaskSelection.bind(this, task)}
+              />
+            ))}
+          </div>
+        </div>
+      );
+    }
     return (
       <div className="tasks__list task-list">
-        <SearchTask onSearch={handleSearch} />
-        <div className="task-list__list">
-          {tasks.map((task, key) => (
-            <TaskSummary
-              key={key}
-              task={task}
-              isSelected={props.selectedTask.id === task.id}
-              onTaskSelected={handleTaskSelection.bind(null, task)}
-            />
-          ))}
-        </div>
+        <EmptyMessage message="No tasks!" />
       </div>
     );
   }
-  return (
-    <div className="tasks__list task-list">
-      <EmptyMessage message="No tasks!" />
-    </div>
-  );
-};
+}
 
 TaskList.propTypes = {
   status: PropTypes.string
 };
 
 export default connect(state => ({
-  tasks: state.tasks,
-  selectedTask: state.selectedTask
+  tasks: Object.keys(state.tasks).map(k => state.tasks[k]),
+  selectedTask: state.tasks[state.selectedTask] || {}
 }))(TaskList);

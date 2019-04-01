@@ -1,4 +1,5 @@
 import keyBy from 'lodash/keyBy';
+import defaults from 'lodash/defaults';
 import uniqueId from 'lodash/uniqueId';
 
 import { formatDate } from '../utils';
@@ -63,7 +64,16 @@ const initialState = keyBy(t, 'id');
 const tasks = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TASK: {
-      const task = action.task;
+      const task = defaults(action.task, {
+        id: uniqueId('task-'),
+        title: 'Untitled task',
+        description: '',
+        progress: 0,
+        priority: TaskPriority.LOW,
+        tags: 'todo',
+        status: TaskStatus.PENDING,
+        createdAt: formatDate(new Date())
+      });
       return {
         [task.id]: task,
         ...state

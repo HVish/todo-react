@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/task-in-progress.9be52237.svg"
   },
   {
-    "revision": "decad89ad592dd4f323d",
+    "revision": "89d424f6f431880c8dfa",
     "url": "/todo-react/static/css/main.1167165f.chunk.css"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/task-completed.981ae311.svg"
   },
   {
-    "revision": "decad89ad592dd4f323d",
-    "url": "/todo-react/static/js/main.38b5c821.chunk.js"
+    "revision": "89d424f6f431880c8dfa",
+    "url": "/todo-react/static/js/main.d0bf40a1.chunk.js"
   },
   {
     "revision": "59c6254cab748a2e19c353fc76995780",
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/www.c94aea67.svg"
   },
   {
-    "revision": "cb78e5c346747427fca15eee7d0bca94",
+    "revision": "e8ac65cb0053aa4ac7a4d1de4849e857",
     "url": "/todo-react/index.html"
   }
 ];

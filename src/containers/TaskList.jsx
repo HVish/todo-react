@@ -3,9 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import '../styles/TaskList.scss';
+import { TaskStatus } from '../constants/tasks';
 import { toggleTaskSelection } from '../actions';
-import TaskSummary from '../components/TaskSummary';
 import SearchTask from '../components/SearchTask';
+import TaskSummary from '../components/TaskSummary';
 import EmptyMessage from '../components/EmptyMessage';
 
 class TaskList extends React.Component {
@@ -17,13 +18,17 @@ class TaskList extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    const tasks = props.tasks.filter(t => t.status === props.status || props.status === 'all');
+    const tasks = props.tasks.filter(
+      t => t.status === props.status || (props.status === 'all' && t.status !== TaskStatus.ARCHIVED)
+    );
     this.setState({ tasks: tasks });
   }
 
   componentDidMount() {
     const props = this.props;
-    const tasks = props.tasks.filter(t => t.status === props.status || props.status === 'all');
+    const tasks = props.tasks.filter(
+      t => t.status === props.status || (props.status === 'all' && t.status !== TaskStatus.ARCHIVED)
+    );
     this.setState({ tasks: tasks });
   }
 

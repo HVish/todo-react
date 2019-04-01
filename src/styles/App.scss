@@ -55,6 +55,10 @@
     font-size: 1rem;
   }
 
+  &:focus {
+    outline: none;
+  }
+
   &_default {
     background: #343746;
     color: #fff;
@@ -67,6 +71,11 @@
 
   &_success {
     background: #388e3c;
+    color: #fff;
+  }
+
+  &_danger {
+    background: #f44336;
     color: #fff;
   }
 }

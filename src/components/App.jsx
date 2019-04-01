@@ -11,6 +11,7 @@ const App = props => (
   <div className="app">
     <SideNav />
     <MainContainer>
+      <Route path={`${props.match.path}/archived`} component={Tasks(TaskStatus.ARCHIVED)} />
       <Route path={`${props.match.path}/completed`} component={Tasks(TaskStatus.COMPLETED)} />
       <Route path={`${props.match.path}/in-progress`} component={Tasks(TaskStatus.IN_PROGRESS)} />
       <Route path={`${props.match.path}/pending`} component={Tasks(TaskStatus.PENDING)} />

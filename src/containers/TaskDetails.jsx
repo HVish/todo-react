@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import startCase from 'lodash/startCase';
 
 import '../styles/TaskDetails.scss';
+import BinIcon from '../assets/bin.svg';
 import EditIcon from '../assets/edit.svg';
 import DoneIcon from '../assets/done.svg';
 
@@ -27,6 +28,15 @@ const TaskDetails = props => {
     );
   };
 
+  const handleMarkAsArchived = () => {
+    props.dispatch(
+      updateTask({
+        ...task,
+        status: TaskStatus.ARCHIVED
+      })
+    );
+  };
+
   const handleEditTask = task => {
     setIsEditing(false);
     props.dispatch(updateTask(task));
@@ -34,6 +44,36 @@ const TaskDetails = props => {
 
   const handleFormCancel = () => {
     setIsEditing(false);
+  };
+
+  const TaskActions = () => {
+    switch (task.status) {
+      case TaskStatus.ARCHIVED:
+        return null;
+      case TaskStatus.COMPLETED:
+        return (
+          <div className="task-panel__actions">
+            <button className="button button_danger" onClick={handleMarkAsArchived}>
+              <img src={BinIcon} alt="archive" className="button__icon" />
+              <span className="button__text">Archive</span>
+            </button>
+          </div>
+        );
+
+      default:
+        return (
+          <div className="task-panel__actions">
+            <button className="button button_info" onClick={() => setIsEditing(true)}>
+              <img src={EditIcon} alt="edit" className="button__icon" />
+              <span className="button__text">Edit Task</span>
+            </button>
+            <button className="button button_success" onClick={handleMarkAsDone}>
+              <img src={DoneIcon} alt="done" className="button__icon" />
+              <span className="button__text">Done</span>
+            </button>
+          </div>
+        );
+    }
   };
 
   if (isTaskSelected && isEditing) {
@@ -88,18 +128,7 @@ const TaskDetails = props => {
         </div>
         {task.description && <div className="task-panel__details-label">Description: </div>}
         <p className="task-panel__details">{task.description}</p>
-        {task.status !== TaskStatus.COMPLETED && (
-          <div className="task-panel__actions">
-            <button className="button button_info" onClick={() => setIsEditing(true)}>
-              <img src={EditIcon} alt="edit" className="button__icon" />
-              <span className="button__text">Edit Task</span>
-            </button>
-            <button className="button button_success" onClick={handleMarkAsDone}>
-              <img src={DoneIcon} alt="done" className="button__icon" />
-              <span className="button__text">Done</span>
-            </button>
-          </div>
-        )}
+        {TaskActions()}
       </div>
     );
   }

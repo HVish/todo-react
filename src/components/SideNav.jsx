@@ -10,7 +10,6 @@ import TaskInProgressIcon from '../assets/task-in-progress.svg';
 
 import Author from './Author';
 import NavItem from './NavItem';
-import CircularProgress from './CircularProgress';
 
 const SideNav = () => (
   <nav className="app__side-nav nav">

@@ -13,29 +13,39 @@ class TaskList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: []
+      tasks: [],
+      search: ''
     };
   }
 
   componentWillReceiveProps(props) {
-    const tasks = props.tasks.filter(
-      t => t.status === props.status || (props.status === 'all' && t.status !== TaskStatus.ARCHIVED)
-    );
-    this.setState({ tasks: tasks });
+    this.initList(props);
   }
 
   componentDidMount() {
-    const props = this.props;
+    this.initList(this.props);
+  }
+
+  initList(props) {
     const tasks = props.tasks.filter(
-      t => t.status === props.status || (props.status === 'all' && t.status !== TaskStatus.ARCHIVED)
+      t =>
+        (t.status === props.status ||
+          (props.status === 'all' && t.status !== TaskStatus.ARCHIVED)) &&
+        t.title.match(new RegExp(this.state.search, 'i'))
     );
-    this.setState({ tasks: tasks });
+    this.setState({ ...this.state, tasks });
   }
 
   handleSearch(title) {
     this.setState({
       ...this.state,
-      tasks: this.props.tasks.filter(t => t.title.match(new RegExp(title, 'i')))
+      search: title,
+      tasks: this.props.tasks.filter(
+        t =>
+          (t.status === this.props.status ||
+            (this.props.status === 'all' && t.status !== TaskStatus.ARCHIVED)) &&
+          t.title.match(new RegExp(title, 'i'))
+      )
     });
   }
 
@@ -46,10 +56,10 @@ class TaskList extends React.Component {
   render() {
     const tasks = this.state.tasks;
     const selectedTask = this.props.selectedTask;
-    if (tasks.length) {
-      return (
-        <div className="tasks__list task-list">
-          <SearchTask onSearch={this.handleSearch.bind(this)} />
+    return (
+      <div className="tasks__list task-list">
+        <SearchTask onSearch={this.handleSearch.bind(this)} />
+        {tasks.length ? (
           <div className="task-list__list">
             {tasks.map((task, key) => (
               <TaskSummary
@@ -60,12 +70,9 @@ class TaskList extends React.Component {
               />
             ))}
           </div>
-        </div>
-      );
-    }
-    return (
-      <div className="tasks__list task-list">
-        <EmptyMessage message="No tasks!" />
+        ) : (
+          <EmptyMessage message="No tasks!" />
+        )}
       </div>
     );
   }

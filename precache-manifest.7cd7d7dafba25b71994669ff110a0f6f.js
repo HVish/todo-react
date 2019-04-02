@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/task-in-progress.9be52237.svg"
   },
   {
-    "revision": "89d424f6f431880c8dfa",
+    "revision": "0acd5864362dc7e07555",
     "url": "/todo-react/static/css/main.1167165f.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/todo-react/static/js/runtime~main.6292bb99.js"
   },
   {
-    "revision": "982551e4dd036d583eff",
-    "url": "/todo-react/static/js/2.a5644f32.chunk.js"
+    "revision": "b3386594596cf57ddf37",
+    "url": "/todo-react/static/js/2.05856a3d.chunk.js"
   },
   {
     "revision": "e7cffb9da4786f79de819029970890e0",
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/task-completed.981ae311.svg"
   },
   {
-    "revision": "89d424f6f431880c8dfa",
-    "url": "/todo-react/static/js/main.d0bf40a1.chunk.js"
+    "revision": "0acd5864362dc7e07555",
+    "url": "/todo-react/static/js/main.8b80050c.chunk.js"
   },
   {
     "revision": "59c6254cab748a2e19c353fc76995780",
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "/todo-react/static/media/www.c94aea67.svg"
   },
   {
-    "revision": "e8ac65cb0053aa4ac7a4d1de4849e857",
+    "revision": "019b4d86f0a20d7b2f0b18926ddf618d",
     "url": "/todo-react/index.html"
   }
 ];

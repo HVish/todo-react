@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'dimentions';
 
 .header {
   &__title {
@@ -9,5 +10,32 @@
   &__action {
     cursor: pointer;
     flex-shrink: 0;
+
+    &_lg-screen {
+      display: flex !important;
+    }
+
+    &_sm-screen {
+      display: none !important;
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: #7e57c2;
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: $screen-sm) {
+  .header {
+    &__action {
+      &_sm-screen {
+        display: flex !important;
+      }
+
+      &_lg-screen {
+        display: none !important;
+      }
+    }
   }
 }

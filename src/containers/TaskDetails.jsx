@@ -7,7 +7,7 @@ import BinIcon from '../assets/bin.svg';
 import EditIcon from '../assets/edit.svg';
 import DoneIcon from '../assets/done.svg';
 
-import { updateTask } from '../actions';
+import { updateTask, toggleTaskSelection } from '../actions';
 import TaskForm from '../components/TaskForm';
 import { TaskStatus } from '../constants/tasks';
 import EmptyMessage from '../components/EmptyMessage';
@@ -17,6 +17,10 @@ const TaskDetails = props => {
   const [isEditing, setIsEditing] = useState(false);
   const task = props.selectedTask;
   const isTaskSelected = !!task.id;
+
+  const handleTaskClose = () => {
+    props.dispatch(toggleTaskSelection(task.id));
+  }
 
   const handleMarkAsDone = () => {
     props.dispatch(
@@ -85,24 +89,18 @@ const TaskDetails = props => {
   } else if (isTaskSelected) {
     return (
       <div className="tasks__details task-panel">
-        <h1 className="task-panel__title">{task.title}</h1>
+        <h1 className="task-panel__title">
+          <span className="title">{task.title}</span>
+          <span className="close" onClick={handleTaskClose}>&times;</span>
+        </h1>
         <div className="task-panel__metas">
-          <div className="task-panel__section">
-            <CircularProgress
-              className="task-panel__canvas"
-              color="#fbc02d"
-              showLabel
-              width={150}
-              progress={task.progress}
-            />
-          </div>
           <div className="task-panel__section">
             <div className="meta">
               <span className="meta__title">ID:</span>
               <span className="meta__value">{task.id}</span>
             </div>
             <div className="meta">
-              <span className="meta__title">Date of creation:</span>
+              <span className="meta__title">Created At:</span>
               <span className="meta__value">{task.createdAt}</span>
             </div>
             <div className="meta">
@@ -124,6 +122,15 @@ const TaskDetails = props => {
               <span className="meta__title">Status:</span>
               <span className="meta__value">{startCase(task.status)}</span>
             </div>
+          </div>
+          <div className="task-panel__section">
+            <CircularProgress
+              className="task-panel__canvas"
+              color="#fbc02d"
+              showLabel
+              width={150}
+              progress={task.progress}
+            />
           </div>
         </div>
         {task.description && <div className="task-panel__details-label">Description: </div>}

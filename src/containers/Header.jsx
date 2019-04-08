@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -20,24 +20,30 @@ const Header = props => {
   };
 
   return (
-    <header className="app__header header">
-      <div className="header__title">{props.title}</div>
-      <button
-        className="header__action button button_default"
-        onClick={() => setIsCreateModalVisible(true)}
-      >
-        <img src={plusIcon} className="button__icon" alt="plus" />
-        <span className="button__text">Add Tasks</span>
-      </button>
-      {isCreateModalVisible && (
-        <div className="modal">
-          <div className="modal__body">
-            <TaskForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+    <Fragment>
+      <header className="app__header header">
+        <div className="header__title">{props.title}</div>
+        <button
+          className="header__action header__action_lg-screen button button_default"
+          onClick={() => setIsCreateModalVisible(true)}
+        >
+          <img src={plusIcon} className="button__icon" alt="plus" />
+          <span className="button__text">Add Tasks</span>
+        </button>
+        {isCreateModalVisible && (
+          <div className="modal">
+            <div className="modal__body">
+              <TaskForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+            </div>
+            <div className="modal__backdrop" onClick={handleFormCancel} />
           </div>
-          <div className="modal__backdrop" onClick={handleFormCancel} />
-        </div>
-      )}
-    </header>
+        )}
+      </header>
+      {!props.selectedTask && <button
+        className="header__action header__action_sm-screen button button_fab"
+        onClick={() => setIsCreateModalVisible(true)}
+      >+</button>}
+    </Fragment>
   );
 };
 
@@ -45,4 +51,4 @@ Header.propTypes = {
   title: PropTypes.string.isRequired
 };
 
-export default connect()(Header);
+export default connect(({ selectedTask }) => ({ selectedTask }))(Header);
